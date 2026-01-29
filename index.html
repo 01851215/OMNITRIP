@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omnitrip</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Fredoka', 'sans-serif'],
+            },
+            colors: {
+              'omni-blue': '#bae6fd',
+              'omni-green': '#bbf7d0',
+              'omni-yellow': '#fde047',
+              'omni-pink': '#fbcfe8',
+              'omni-dark': '#334155',
+            },
+            boxShadow: {
+              'cartoon': '4px 4px 0px 0px #334155',
+              'cartoon-sm': '2px 2px 0px 0px #334155',
+              'cartoon-lg': '8px 8px 0px 0px #334155',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f0f9ff;
+        color: #334155;
+      }
+      .leaflet-container {
+        border-radius: 1.5rem;
+        border: 4px solid #334155;
+        z-index: 10;
+      }
+      /* Custom cartoon markers */
+      .custom-div-icon {
+        background: #fde047;
+        border: 2px solid #334155;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        font-weight: bold;
+        box-shadow: 2px 2px 0px #334155;
+      }
+
+      /* Cartoon Animations */
+      @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(2deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      @keyframes wiggle {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+      }
+      .animate-wiggle {
+        animation: wiggle 0.5s ease-in-out infinite;
+      }
+
+      @keyframes cloudFloat {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(20px); }
+      }
+      .cloud {
+        animation: cloudFloat 4s ease-in-out infinite alternate;
+      }
+
+      .sticker-hover:hover {
+        transform: scale(1.05) rotate(2deg);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .speech-bubble::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 20px;
+        border-width: 15px 15px 0 0;
+        border-style: solid;
+        border-color: #334155 transparent transparent transparent;
+      }
+      .speech-bubble-inner::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 22px;
+        border-width: 10px 10px 0 0;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "leaflet": "https://esm.sh/leaflet@1.9.4"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

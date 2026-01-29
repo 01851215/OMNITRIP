@@ -1,0 +1,9 @@
+{
+  "name": "Omnitrip",
+  "description": "A minimalistic, cartoon-style travel planner acting as your passionate best friend. Features AI-powered trip consultation, itinerary generation with map integration, and budget management.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera",
+    "microphone"
+  ]
+}
